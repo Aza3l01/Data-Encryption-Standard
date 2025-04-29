@@ -4,6 +4,7 @@ from Crypto.Random import get_random_bytes
 
 def encrypt_msg(plain_text,key):
   cipher = DES.new(key,DES.MODE_ECB)
+  # Padding to ensure plain text is a multiple of block size.
   pad_msg = pad(plain_text.encode(),DES.block_size)
   cipher_text = cipher.encrypt(pad_msg)
   return cipher_text
